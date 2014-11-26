@@ -67,3 +67,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
    \| exe "normal! g'\"" | endif
 endif
+
+" change working directory to that of opened file.
+set autochdir
