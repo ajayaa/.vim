@@ -1,5 +1,5 @@
 call pathogen#infect()
-" call pathogen#helptags()
+call pathogen#helptags()
 set scrolloff=5
 set sidescrolloff=5
 
@@ -61,7 +61,8 @@ set cc=80
 :nmap <leader>q :nohlsearch<CR>
 
 " shortcut for buffer listing
-:nmap <c-b> :buffers<CR>
+:cmap bl :buffers
+
 " Nerd tree view toggler
 :nmap \e :NERDTreeToggle<CR>
 
