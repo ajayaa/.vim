@@ -6,8 +6,8 @@ set sidescrolloff=5
 " no ~ files or swap files
 set nobackup
 set nowrap
-" type ca in normal mode to copy everything to clipboard
-nnoremap ca gg"+yG
+" type sa in normal mode to copy everything to clipboard
+nnoremap sa gg"+yG
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
@@ -64,7 +64,7 @@ set cc=80
 :cmap bl :buffers
 
 " Nerd tree view toggler
-:nmap \e :NERDTreeToggle<CR>
+:nmap \n :NERDTreeToggle<CR>
 
 " Learn about gnu global sometime.
 " It is allegedly better than ctags.
