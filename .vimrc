@@ -1,13 +1,22 @@
 call pathogen#infect()
 call pathogen#helptags()
-set scrolloff=5
-set sidescrolloff=5
 
 " no ~ files or swap files
 set nobackup
 set nowrap
+" anything selected would be copied to default register in vim
+" set clipboard=unnamedplus
 " type sa in normal mode to copy everything to clipboard
 nnoremap sa gg"+yG
+" type zz in normal mode to paste formatted text from clipboard.
+nnoremap zz :set paste<CR>o<esc>"+p:set nopaste<CR>
+" This example shows how to write a function in vim.
+
+" function! Copy_clipboard()
+"     :set paste
+"     call feedkeys('"+p')
+"     :set nopaste
+" endfunction
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
@@ -24,9 +33,6 @@ inoremap <right> <nop>
 ino jj <esc>
 cno jj <c-c>
 vno v <esc>
-filetype plugin on
-filetype on
-filetype indent on
 set tags=./tags,tags;$HOME
 let g:pep8_map='<leader>8'
 set nu
@@ -34,20 +40,27 @@ set wildmenu
 set ruler
 set cmdheight=2
 set hid
-"set smarttab
-set tabstop=4
 set lbr
 "set tw=79
 set ai "Auto indent
-":colorscheme fruity
 let python_highlight_all = 1
 "set fdm=indent
 "set fdc=4
 "set fdl=1
 set t_Co=256
-:color molokai
+":colorscheme fruity
+":color molokai
+":color pablo
+:color morning
 " set colorcolumn to 80
 set cc=80
+
+filetype plugin on
+filetype on
+filetype indent on
+set shiftwidth=4
+set smartindent
+set tabstop=4
 :set expandtab
 " starts highlighting text as you start typing
 :set incsearch
@@ -59,7 +72,8 @@ set cc=80
 :set hlsearch
 " type \q to undo the highlight done with hlsearch
 :nmap <leader>q :nohlsearch<CR>
-
+:nmap <leader>+ :vertical resize +5<CR>
+:nmap <leader>- :vertical resize -5<CR>
 " shortcut for buffer listing
 :cmap bl :buffers
 
@@ -74,8 +88,8 @@ set cc=80
 " Uncomment the following to have Vim jump to the last position when                                                       
 " " reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-   \| exe "normal! g'\"" | endif
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+\| exe "normal! g'\"" | endif
 endif
 
 " change working directory to that of opened file.
@@ -108,3 +122,6 @@ set foldnestmax=2
 " " set foldnestmax=20
 "
 map <c-t> :tabnew
+" syntax highlighting for markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+set encoding=utf-8
