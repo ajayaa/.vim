@@ -8,6 +8,7 @@ set nowrap
 " set clipboard=unnamedplus
 " type sa in normal mode to copy everything to clipboard
 nnoremap sa gg"+yG
+nnoremap sd gg"+dG
 " type zz in normal mode to paste formatted text from clipboard.
 nnoremap zz :set paste<CR>o<esc>"+p:set nopaste<CR>
 " This example shows how to write a function in vim.
@@ -49,9 +50,9 @@ let python_highlight_all = 1
 "set fdl=1
 set t_Co=256
 ":colorscheme fruity
-":color molokai
+:color molokai
 ":color pablo
-:color morning
+":color morning
 " set colorcolumn to 80
 set cc=80
 
@@ -125,3 +126,5 @@ map <c-t> :tabnew
 " syntax highlighting for markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set encoding=utf-8
+
+" noremap ff gqq
