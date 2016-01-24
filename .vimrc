@@ -122,9 +122,32 @@ set foldnestmax=2
 " " set foldlevel=99
 " " set foldnestmax=20
 "
-map <c-t> :tabnew
+"map <c-t> :tabnew
 " syntax highlighting for markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set encoding=utf-8
 
 " noremap ff gqq
+"
+
+" Make it easy to open up vimrc file.
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Reload vimrc file.
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Add abbreviations.
+" http://learnvimscriptthehardway.stevelosh.com/chapters/08.html
+:iabbrev @@   ajku.agr@gmail.com
+:iabbrev tehn then
+:iabbrev waht what
+
+" Easily go to beginning and end of line.
+:nnoremap H ^
+:nnoremap L $
+
+" Wrap a word in double quotes.
+:nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
+" Wrap a word in single quotes.
+:nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
