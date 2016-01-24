@@ -151,3 +151,6 @@ set encoding=utf-8
 
 " Wrap a word in single quotes.
 :nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+
+" Map tagbartoggle to <leader>t
+:nnoremap <leader>t :TagbarToggle<cr>
