@@ -50,7 +50,8 @@ let python_highlight_all = 1
 "set fdl=1
 set t_Co=256
 ":colorscheme fruity
-:color molokai
+":color molokai
+:color faith-molokai
 ":color pablo
 ":color morning
 " set colorcolumn to 80
@@ -154,3 +155,9 @@ set encoding=utf-8
 
 " Map tagbartoggle to <leader>t
 :nnoremap <leader>t :TagbarToggle<cr>
+
+" shortcuts after installing go-vim.
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
