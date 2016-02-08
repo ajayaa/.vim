@@ -161,3 +161,13 @@ au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType python nnoremap <buffer> <leader>r :w<cr>:!python %<cr>
+
+
+function Copy() range
+  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| xclip -selection clipboard')
+endfunction
+
+:nnoremap <leader>y yy:call Copy()<CR>
+:vnoremap <leader>y yy:call Copy()<CR>
