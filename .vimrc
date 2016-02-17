@@ -77,7 +77,7 @@ set tabstop=4
 :nmap <leader>+ :vertical resize +5<CR>
 :nmap <leader>- :vertical resize -5<CR>
 " shortcut for buffer listing
-:cmap bl :buffers
+":cmap bl :buffers
 
 " Nerd tree view toggler
 :nmap \n :NERDTreeToggle<CR>
@@ -163,6 +163,8 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
 au FileType python nnoremap <buffer> <leader>r :w<cr>:!python %<cr>
+
+:nnoremap <leader>s :%s/\s\+$//<cr>
 
 
 function Copy() range

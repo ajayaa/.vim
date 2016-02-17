@@ -52,3 +52,6 @@
 [submodule "bundle/vim-pencil"]
 	path = bundle/vim-pencil
 	url = https://github.com/reedes/vim-pencil
+[submodule "tcomment_vim"]
+	path = bundle/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim
