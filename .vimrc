@@ -1,6 +1,6 @@
 call pathogen#infect()
 call pathogen#helptags()
-
+set t_Co=256
 " no ~ files or swap files
 set nobackup
 set nowrap
@@ -48,12 +48,7 @@ let python_highlight_all = 1
 "set fdm=indent
 "set fdc=4
 "set fdl=1
-set t_Co=256
-":colorscheme fruity
-":color molokai
 :color faith-molokai
-":color pablo
-":color morning
 " set colorcolumn to 80
 set cc=80
 
@@ -87,7 +82,7 @@ set tabstop=4
 
 
 
-" Uncomment the following to have Vim jump to the last position when                                                       
+" Uncomment the following to have Vim jump to the last position when
 " " reopening a file
 if has("autocmd")
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
@@ -157,19 +152,52 @@ set encoding=utf-8
 :nnoremap <leader>t :TagbarToggle<cr>
 
 " shortcuts after installing go-vim.
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
+" au FileType go nmap <leader>r <Plug>(go-run)
+" au FileType go nmap <leader>b <Plug>(go-build)
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
 
 au FileType python nnoremap <buffer> <leader>r :w<cr>:!python %<cr>
 
 :nnoremap <leader>s :%s/\s\+$//<cr>
 
 
-function Copy() range
-  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| xclip -selection clipboard')
+function! Copy() range
+  echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| pbcopy')
 endfunction
 
-:nnoremap <leader>y yy:call Copy()<CR>
-:vnoremap <leader>y yy:call Copy()<CR>
+:nnoremap <leader>yy y:call Copy()<CR>
+:vnoremap <leader>yy y:call Copy()<CR>
+
+syntax on
+
+set backspace=indent,eol,start
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+set laststatus=2
+set statusline+=%F%{fugitive#statusline()}
+imap <C-t> <Plug>snipMateNextOrTrigger
+
+" Open quick fix list in a vertical split.
+" autocmd! FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+" :command! -nargs=+ SS :sp|Ggrep "<args>"
+" :command! -nargs=+ SV :vs|Ggrep "<args>"
+" Opens search result in a split
+:command! -nargs=+ SS execute 'silent Ggrep!' <q-args> | cw | redraw!
+
+" func! GitGrep(...)
+"   let save = &grepprg
+"   set grepprg=git\ grep\ -n\ $*
+"   let s = 'grep'
+"   for i in a:000
+"     let s = s . ' ' . i
+"   endfor
+"   exe s
+"   let &grepprg = save
+" endfun
+" command! -nargs=? G call GitGrep(<f-args>) | cw | redraw!
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
