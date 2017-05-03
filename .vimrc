@@ -110,7 +110,7 @@ set foldlevel=1
 " " Python, '2' means code will be folded at class level, and method level.
 " " Once you unfold a method, further indents (e.g. a 'for' loop) won't be
 " folded
-set foldnestmax=2
+set foldnestmax=100
 "
 " " These two settings work well if you want to start with folded code. If you
 " " prefer to start with unfolded code, these two lines will work best.
@@ -201,3 +201,28 @@ imap <C-t> <Plug>snipMateNextOrTrigger
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+inoremap <C-e> <C-o>$
+
+" Allows you to easily replace the current word and all its occurrences.
+nnoremap <Leader>rc :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>rc y:%s/<C-r>"/
+
+" Allows you to easily change the current word and all occurrences to
+" something
+" " else. The difference between this and the previous mapping is that the
+" mapping
+" " below pre-fills the current word for you to change.
+nnoremap <Leader>cc :%s/\<<C-r><C-w>\>/<C-r><C-w>
+vnoremap <Leader>cc y:%s/<C-r>"/<C-r>"
+
+" Remove ANSI color escape codes for the edited file. This is handy when
+" " piping colored text into Vim.
+nnoremap <Leader>rac :%s/<C-v><Esc>\[\(\d\{1,2}\(;\d\{1,2}\)\{0,2\}\)\?[m\|K]//g<CR>
+
+" Tab colors.
+au BufEnter * hi TabLine guibg=black guifg=gray ctermbg=black ctermfg=gray
+au BufEnter * hi TabLineSel guibg=black guifg=white ctermbg=black ctermfg=white
+au BufEnter * hi TabLineFill guibg=black guifg=black ctermbg=black ctermfg=black
+
+autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
+autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
