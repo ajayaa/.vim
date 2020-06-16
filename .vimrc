@@ -226,3 +226,5 @@ au BufEnter * hi TabLineFill guibg=black guifg=black ctermbg=black ctermfg=black
 
 autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+:set switchbuf+=usetab,newtab
+
