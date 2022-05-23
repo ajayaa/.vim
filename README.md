@@ -14,4 +14,9 @@ To use this:
 * Make a commit
 
 ## To add a plugin ##
+destination_folder == bundle/<submodule_name>
 * git submodule add <remote_url> <destination_folder>
+* rm -rf .git/modules/bundle/<submodule_name>
+
+## Update all the plugins ##
+* git submodule foreach git pull origin master 
