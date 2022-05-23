@@ -228,3 +228,6 @@ autocmd BufRead,BufNewFile *.md,*.txt setlocal spell
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 :set switchbuf+=usetab,newtab
 
+" Make nerdtree available in all buffers and tabs
+"autocmd VimEnter * NERDTree
+"autocmd BufEnter * NERDTreeMirror
