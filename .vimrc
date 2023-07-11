@@ -231,3 +231,4 @@ autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 " Make nerdtree available in all buffers and tabs
 "autocmd VimEnter * NERDTree
 "autocmd BufEnter * NERDTreeMirror
+let g:snipMate = { 'snippet_version' : 1 }
